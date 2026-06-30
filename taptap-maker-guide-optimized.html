@@ -237,6 +237,7 @@
             </a>
             <nav class="flex items-center gap-1 md:gap-2 text-sm">
                 <a href="#home" data-page="home" class="nav-link nav-active">首页</a>
+                <a href="#docs" data-page="docs" class="nav-link">帮助文档</a>
                 <a href="#rank" data-page="rank" class="nav-link">品类排行榜</a>
                 <a href="#weekly" data-page="weekly" class="nav-link">开发实践文档</a>
             </nav>
@@ -610,8 +611,21 @@
                 其他资源入口
             </h2>
         </div>
-        <div id="resourceGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div id="resourceGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
+            <div class="resource-item">
+                <a href="#docs" data-page="docs" class="glass-card p-8 block h-full group text-center md:text-left bg-[#0a0f14]/60 backdrop-blur-md">
+                    <div class="mb-6 transform transition-all duration-300 group-hover:scale-110 inline-block filter drop-shadow-[0_5px_15px_rgba(1,194,195,0.4)]">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#01C2C3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5V5.8A2.8 2.8 0 0 1 6.8 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5"/><path d="M8 7h8"/><path d="M8 11h7"/><path d="M8 15h5"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[#01C2C3] transition-colors">帮助文档</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed font-normal">
+                        从第一句话到发布上线，把论坛长帖拆成可以一步步照做的文档。
+                    </p>
+                </a>
+            </div>
             <div class="resource-item">
                 <a href="#rank" data-page="rank" class="glass-card p-8 block h-full group text-center md:text-left bg-[#0a0f14]/60 backdrop-blur-md">
                     <div class="mb-6 transform transition-all duration-300 group-hover:scale-110 inline-block filter drop-shadow-[0_5px_15px_rgba(1,194,195,0.4)]">
@@ -655,6 +669,161 @@
     </section>
     </div><!-- /routeScope -->
 
+    </main>
+
+    <main id="page-docs" class="hidden">
+        <section class="relative z-10 max-w-6xl mx-auto px-4 pt-32 pb-24 min-h-screen">
+            <div class="flex items-center space-x-4 mb-4">
+                <div class="w-10 h-10 rounded-full bg-[#01C2C3] text-[#0a0f14] font-black flex items-center justify-center text-lg shadow-[0_0_15px_rgba(1,194,195,0.5)]">文</div>
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight leading-tight text-white">Maker 帮助文档</h2>
+            </div>
+            <p class="mt-4 mb-10 md:mb-12 text-sm md:text-base leading-relaxed text-gray-300 max-w-3xl">
+                把论坛长帖拆成新手能照着走的操作文档。先跑通第一条创作闭环，再按问题去查提示词、调试、素材、积分和发布。
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-8 lg:gap-12">
+                <aside class="hidden lg:block">
+                    <div class="sticky top-28 border-l border-white/10 pl-4 space-y-3 text-sm">
+                        <a href="#doc-start" class="block text-gray-400 hover:text-[#01C2C3] transition-colors">快速开始</a>
+                        <a href="#doc-prompt" class="block text-gray-400 hover:text-[#01C2C3] transition-colors">写好第一句话</a>
+                        <a href="#doc-preview" class="block text-gray-400 hover:text-[#01C2C3] transition-colors">预览与调试</a>
+                        <a href="#doc-assets" class="block text-gray-400 hover:text-[#01C2C3] transition-colors">素材生成</a>
+                        <a href="#doc-points" class="block text-gray-400 hover:text-[#01C2C3] transition-colors">积分与效率</a>
+                        <a href="#doc-publish" class="block text-gray-400 hover:text-[#01C2C3] transition-colors">发布到 TapTap</a>
+                    </div>
+                </aside>
+
+                <div class="space-y-6">
+                    <section id="doc-start" class="scroll-mt-28 border border-white/10 bg-[#0a0f14]/55 backdrop-blur-md rounded-2xl p-6 md:p-8">
+                        <p class="text-xs font-mono tracking-[0.2em] text-[#01C2C3] mb-3">01 / START</p>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white">快速开始：10 分钟跑通第一关</h3>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            TapTap Maker 的第一目标不是把所有功能学完，而是尽快完成一次闭环：描述一个小游戏，试玩它，修一个明显问题，然后发布一个可访问版本。
+                        </p>
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <p class="text-sm font-semibold text-white">描述想法</p>
+                                <p class="mt-2 text-sm text-gray-400 leading-relaxed">用一句完整需求告诉 AI 玩法、目标、操作和画面。</p>
+                            </div>
+                            <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <p class="text-sm font-semibold text-white">预览试玩</p>
+                                <p class="mt-2 text-sm text-gray-400 leading-relaxed">先用电脑或手机跑起来，看玩家是否知道该做什么。</p>
+                            </div>
+                            <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <p class="text-sm font-semibold text-white">发布上线</p>
+                                <p class="mt-2 text-sm text-gray-400 leading-relaxed">修完关键问题后生成版本链接，再补封面和简介。</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 rounded-xl border border-[#01C2C3]/30 bg-[#01C2C3]/[0.06] p-4">
+                            <p class="text-sm font-semibold text-[#01C2C3]">第一条提示词可以这样写</p>
+                            <p class="mt-2 text-sm text-gray-300 leading-relaxed">
+                                做一个竖屏平台跳跃小游戏。玩家左右移动和跳跃，收集 5 个星星后到达终点。画面是明亮像素风，有计时、死亡重来和通关提示。
+                            </p>
+                        </div>
+                    </section>
+
+                    <section id="doc-prompt" class="scroll-mt-28 border border-white/10 bg-[#0a0f14]/55 backdrop-blur-md rounded-2xl p-6 md:p-8">
+                        <p class="text-xs font-mono tracking-[0.2em] text-[#01C2C3] mb-3">02 / PROMPT</p>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white">写好第一句话：让 AI 知道你要什么</h3>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            新手最常见的问题是说得太泛。不要只写“做个跑酷游戏”，要把玩法、胜利条件、失败条件、操作方式和画面风格一起交代清楚。
+                        </p>
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="rounded-xl border border-red-400/20 bg-red-400/[0.04] p-4">
+                                <p class="text-sm font-semibold text-red-200">低效写法</p>
+                                <p class="mt-2 text-sm text-gray-400 leading-relaxed">帮我做一个好玩的游戏，画面精美一点，玩法丰富一点。</p>
+                            </div>
+                            <div class="rounded-xl border border-[#01C2C3]/25 bg-[#01C2C3]/[0.05] p-4">
+                                <p class="text-sm font-semibold text-[#01C2C3]">高效写法</p>
+                                <p class="mt-2 text-sm text-gray-300 leading-relaxed">做一个 2D 横版躲避游戏。玩家拖动角色躲开下落石块，坚持 60 秒胜利，被砸中就失败。画面是卡通矿洞风。</p>
+                            </div>
+                        </div>
+                        <ul class="mt-6 space-y-3 text-sm text-gray-300 leading-relaxed">
+                            <li>写清楚玩家每一秒在做什么：移动、跳跃、点击、拖拽、选择。</li>
+                            <li>写清楚系统怎么判断输赢：到达终点、坚持时间、血量归零、分数达标。</li>
+                            <li>写清楚最小版本，不要第一轮就要商城、剧情、排行榜和十个关卡。</li>
+                        </ul>
+                    </section>
+
+                    <section id="doc-preview" class="scroll-mt-28 border border-white/10 bg-[#0a0f14]/55 backdrop-blur-md rounded-2xl p-6 md:p-8">
+                        <p class="text-xs font-mono tracking-[0.2em] text-[#01C2C3] mb-3">03 / PREVIEW</p>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white">预览与调试：用截图反馈问题</h3>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            每次生成后先试玩，不要急着继续加功能。发现问题时，把现象、期望结果和截图一起告诉 AI，通常比只说“有 bug”更快。
+                        </p>
+                        <ol class="mt-6 space-y-3 text-sm text-gray-300 leading-relaxed list-decimal list-inside">
+                            <li>先确认游戏能打开，按钮能点击，主角能移动。</li>
+                            <li>再确认新手是否看得懂目标，第一屏是否有明确提示。</li>
+                            <li>最后测试失败、重开、通关三个状态是否正常。</li>
+                        </ol>
+                        <div class="mt-6 rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                            <p class="text-sm font-semibold text-white">反馈模板</p>
+                            <p class="mt-2 text-sm text-gray-400 leading-relaxed">
+                                现在的问题是：角色碰到障碍后没有失败。期望效果是：碰到障碍立刻弹出失败面板，并出现“重新开始”按钮。截图里红框位置就是障碍。
+                            </p>
+                        </div>
+                    </section>
+
+                    <section id="doc-assets" class="scroll-mt-28 border border-white/10 bg-[#0a0f14]/55 backdrop-blur-md rounded-2xl p-6 md:p-8">
+                        <p class="text-xs font-mono tracking-[0.2em] text-[#01C2C3] mb-3">04 / ASSETS</p>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white">素材生成：先补关键资源</h3>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            素材不要一次性铺满。优先生成能影响试玩理解的资源：主角、障碍、目标物、背景、按钮反馈、音效。
+                        </p>
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <p class="font-semibold text-white">图片</p>
+                                <p class="mt-2 text-gray-400 leading-relaxed">说明风格、视角、主体、背景是否透明，以及要用在什么位置。</p>
+                            </div>
+                            <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <p class="font-semibold text-white">音效</p>
+                                <p class="mt-2 text-gray-400 leading-relaxed">先做点击、跳跃、命中、失败、通关这些短反馈。</p>
+                            </div>
+                            <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <p class="font-semibold text-white">音乐</p>
+                                <p class="mt-2 text-gray-400 leading-relaxed">告诉 AI 节奏、情绪、循环时长和场景，不要只说“来点 BGM”。</p>
+                            </div>
+                            <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <p class="font-semibold text-white">配音</p>
+                                <p class="mt-2 text-gray-400 leading-relaxed">用于开场旁白、结算提示和角色台词，文本越短越稳。</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="doc-points" class="scroll-mt-28 border border-white/10 bg-[#0a0f14]/55 backdrop-blur-md rounded-2xl p-6 md:p-8">
+                        <p class="text-xs font-mono tracking-[0.2em] text-[#01C2C3] mb-3">05 / POINTS</p>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white">积分与效率：少做无效返工</h3>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            积分最容易浪费在模糊需求和连续小改动上。每轮修改前先整理 2 到 4 个明确问题，一次性反馈给 AI。
+                        </p>
+                        <ul class="mt-6 space-y-3 text-sm text-gray-300 leading-relaxed">
+                            <li>先验证核心玩法，再扩展关卡、剧情、商店和养成。</li>
+                            <li>把同类修改合并提交，例如“统一调整主角速度、跳跃高度、障碍间距”。</li>
+                            <li>遇到大问题先缩小范围，要求 AI 只修当前模块，不要顺手重构全部内容。</li>
+                            <li>每次改完保留一个可玩的版本，避免越改越远。</li>
+                        </ul>
+                    </section>
+
+                    <section id="doc-publish" class="scroll-mt-28 border border-white/10 bg-[#0a0f14]/55 backdrop-blur-md rounded-2xl p-6 md:p-8">
+                        <p class="text-xs font-mono tracking-[0.2em] text-[#01C2C3] mb-3">06 / PUBLISH</p>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white">发布到 TapTap：上线前检查清单</h3>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            发布不是最后补一个按钮，而是确认玩家第一次打开时能理解、能操作、能完成一局。先把最小体验打磨完整，再补包装材料。
+                        </p>
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-300">
+                            <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>手机端能正常打开和操作。</span></label>
+                            <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>第一屏能看懂目标和操作。</span></label>
+                            <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>失败、重开、通关状态完整。</span></label>
+                            <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>准备好标题、简介、封面和截图。</span></label>
+                        </div>
+                        <div class="mt-6 flex flex-wrap gap-3">
+                            <a href="https://www.taptap.cn/moment/777645108861338642" target="_blank" class="inline-flex items-center h-10 px-4 rounded-lg border border-[#01C2C3] text-[#01C2C3] text-sm font-semibold hover:bg-[#01C2C3] hover:text-[#0a0f14] transition-colors">查看原论坛帖</a>
+                            <a href="https://maker.taptap.cn/" target="_blank" class="inline-flex items-center h-10 px-4 rounded-lg bg-[#01C2C3] text-[#0a0f14] text-sm font-bold hover:scale-[1.02] transition-transform">进入 Maker 制造</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
     </main>
 
     <main id="page-rank" class="hidden">
@@ -1712,10 +1881,11 @@
             );
         })();
 
-        /* ==================== 页面 Tab 切换（首页 / 品类排行榜 / 开发实践文档） ==================== */
+        /* ==================== 页面 Tab 切换（首页 / 帮助文档 / 品类排行榜 / 开发实践文档） ==================== */
         (function() {
             const pages = {
                 home: document.getElementById('page-home'),
+                docs: document.getElementById('page-docs'),
                 rank: document.getElementById('page-rank'),
                 weekly: document.getElementById('page-weekly')
             };
