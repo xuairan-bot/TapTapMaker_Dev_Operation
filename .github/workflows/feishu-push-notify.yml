@@ -26,6 +26,7 @@ jobs:
           COMPARE_URL: ${{ github.event.compare }}
           HEAD_MESSAGE: ${{ github.event.head_commit.message }}
           HEAD_URL: ${{ github.event.head_commit.url }}
+          SITE_URL: ${{ vars.SITE_URL }}
         run: |
           if [ -z "$FEISHU_BOT_WEBHOOK" ]; then
             echo "FEISHU_BOT_WEBHOOK is not configured; skip Feishu notification."
@@ -44,7 +45,42 @@ jobs:
           const message = process.env.HEAD_MESSAGE || "(no commit message)";
           const commitUrl = process.env.HEAD_URL || `https://github.com/${process.env.REPOSITORY}/commit/${process.env.AFTER_SHA}`;
           const compareUrl = process.env.COMPARE_URL || `https://github.com/${process.env.REPOSITORY}/compare/${process.env.BEFORE_SHA}...${process.env.AFTER_SHA}`;
+          const siteUrl = (process.env.SITE_URL || "").trim();
           const oneLineMessage = message.replace(/\s+/g, " ").trim();
+          const actions = [];
+
+          if (siteUrl) {
+            actions.push({
+              tag: "button",
+              text: {
+                tag: "plain_text",
+                content: "打开网站",
+              },
+              url: siteUrl,
+              type: "primary",
+            });
+          }
+
+          actions.push(
+            {
+              tag: "button",
+              text: {
+                tag: "plain_text",
+                content: "查看提交",
+              },
+              url: commitUrl,
+              type: siteUrl ? "default" : "primary",
+            },
+            {
+              tag: "button",
+              text: {
+                tag: "plain_text",
+                content: "查看本次变更",
+              },
+              url: compareUrl,
+              type: "default",
+            },
+          );
 
           const payload = {
             msg_type: "interactive",
@@ -78,26 +114,7 @@ jobs:
                 },
                 {
                   tag: "action",
-                  actions: [
-                    {
-                      tag: "button",
-                      text: {
-                        tag: "plain_text",
-                        content: "查看提交",
-                      },
-                      url: commitUrl,
-                      type: "primary",
-                    },
-                    {
-                      tag: "button",
-                      text: {
-                        tag: "plain_text",
-                        content: "查看本次变更",
-                      },
-                      url: compareUrl,
-                      type: "default",
-                    },
-                  ],
+                  actions,
                 },
               ],
             },
