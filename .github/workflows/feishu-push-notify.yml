@@ -42,24 +42,64 @@ jobs:
           const beforeSha = (process.env.BEFORE_SHA || "").slice(0, 7);
           const pusher = process.env.PUSHER || process.env.ACTOR || "unknown";
           const message = process.env.HEAD_MESSAGE || "(no commit message)";
-
-          const lines = [
-            "TapTap制造网站有新的 GitHub 推送",
-            "",
-            `仓库：${process.env.REPOSITORY}`,
-            `分支：${process.env.REF_NAME}`,
-            `推送人：${pusher}`,
-            `提交：${beforeSha} -> ${shortSha}`,
-            `说明：${message}`,
-            "",
-            `提交详情：${process.env.HEAD_URL}`,
-            `本次变更：${process.env.COMPARE_URL}`,
-          ];
+          const commitUrl = process.env.HEAD_URL || `https://github.com/${process.env.REPOSITORY}/commit/${process.env.AFTER_SHA}`;
+          const compareUrl = process.env.COMPARE_URL || `https://github.com/${process.env.REPOSITORY}/compare/${process.env.BEFORE_SHA}...${process.env.AFTER_SHA}`;
+          const oneLineMessage = message.replace(/\s+/g, " ").trim();
 
           const payload = {
-            msg_type: "text",
-            content: {
-              text: lines.join("\n"),
+            msg_type: "interactive",
+            card: {
+              config: {
+                wide_screen_mode: true,
+              },
+              header: {
+                template: "turquoise",
+                title: {
+                  tag: "plain_text",
+                  content: "TapTap制造网站有新的推送",
+                },
+              },
+              elements: [
+                {
+                  tag: "div",
+                  text: {
+                    tag: "lark_md",
+                    content: [
+                      `**仓库**：${process.env.REPOSITORY}`,
+                      `**分支**：${process.env.REF_NAME}`,
+                      `**推送人**：${pusher}`,
+                      `**提交**：${beforeSha} -> ${shortSha}`,
+                      `**说明**：${oneLineMessage}`,
+                    ].join("\n"),
+                  },
+                },
+                {
+                  tag: "hr",
+                },
+                {
+                  tag: "action",
+                  actions: [
+                    {
+                      tag: "button",
+                      text: {
+                        tag: "plain_text",
+                        content: "查看提交",
+                      },
+                      url: commitUrl,
+                      type: "primary",
+                    },
+                    {
+                      tag: "button",
+                      text: {
+                        tag: "plain_text",
+                        content: "查看本次变更",
+                      },
+                      url: compareUrl,
+                      type: "default",
+                    },
+                  ],
+                },
+              ],
             },
           };
 
