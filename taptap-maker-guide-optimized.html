@@ -253,7 +253,8 @@
                 <span class="hero-line text-[#01C2C3] text-glow inline-block mt-2">新手指南</span>
             </h1>
             <p id="heroSub" class="text-gray-400 text-base md:text-xl max-w-xl mx-auto mt-4 mb-8 font-normal">
-                不用电脑、不写代码，一部手机就能做出真正能发布的游戏。先玩玩大家的作品找找感觉，再用模板 10 分钟开出你的第一关。
+                <span class="block">TapTap 制造是一个 AI 驱动的游戏创作平台。</span>
+                <span class="block mt-3">你只需要用自然语言描述你想做的游戏，AI 就会帮你生成可运行的游戏代码。无论你是资深开发者还是编程新手，都可以在几分钟内做出一个自己的游戏。</span>
             </p>
             <div id="heroCtaWrap" class="flex flex-wrap gap-4 justify-center">
                 <a href="https://maker.taptap.cn/" target="_blank" class="inline-block px-8 py-3.5 bg-[#01C2C3] text-[#0a0f14] font-bold rounded-full transition-transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(1,194,195,0.4)]">
@@ -690,6 +691,7 @@
                         <a href="#doc-assets" class="block text-gray-400 hover:text-[#01C2C3] transition-colors">素材生成</a>
                         <a href="#doc-points" class="block text-gray-400 hover:text-[#01C2C3] transition-colors">积分与效率</a>
                         <a href="#doc-publish" class="block text-gray-400 hover:text-[#01C2C3] transition-colors">发布到 TapTap</a>
+                        <a href="#doc-distribution" class="block text-gray-400 hover:text-[#01C2C3] transition-colors">分发与资源</a>
                     </div>
                 </aside>
 
@@ -698,7 +700,7 @@
                         <p class="text-xs font-mono tracking-[0.2em] text-[#01C2C3] mb-3">01 / START</p>
                         <h3 class="text-2xl md:text-3xl font-bold text-white">快速开始：10 分钟跑通第一关</h3>
                         <p class="mt-4 text-gray-300 leading-relaxed">
-                            TapTap Maker 的第一目标不是把所有功能学完，而是尽快完成一次闭环：描述一个小游戏，试玩它，修一个明显问题，然后发布一个可访问版本。
+                            TapTap Maker 的第一目标不是把所有功能学完，而是尽快完成一次闭环：描述一个小游戏，试玩它，修一个明显问题，生成可发布版本，再提交到 TapTap。
                         </p>
                         <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
                             <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
@@ -711,7 +713,7 @@
                             </div>
                             <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
                                 <p class="text-sm font-semibold text-white">发布上线</p>
-                                <p class="mt-2 text-sm text-gray-400 leading-relaxed">修完关键问题后生成版本链接，再补封面和简介。</p>
+                                <p class="mt-2 text-sm text-gray-400 leading-relaxed">修完关键问题后准备封面、截图和简介，提交审核。</p>
                             </div>
                         </div>
                         <div class="mt-6 rounded-xl border border-[#01C2C3]/30 bg-[#01C2C3]/[0.06] p-4">
@@ -806,19 +808,102 @@
 
                     <section id="doc-publish" class="scroll-mt-28 border border-white/10 bg-[#0a0f14]/55 backdrop-blur-md rounded-2xl p-6 md:p-8">
                         <p class="text-xs font-mono tracking-[0.2em] text-[#01C2C3] mb-3">06 / PUBLISH</p>
-                        <h3 class="text-2xl md:text-3xl font-bold text-white">发布到 TapTap：上线前检查清单</h3>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white">发布到 TapTap：从版本到上线</h3>
                         <p class="mt-4 text-gray-300 leading-relaxed">
-                            发布不是最后补一个按钮，而是确认玩家第一次打开时能理解、能操作、能完成一局。先把最小体验打磨完整，再补包装材料。
+                            发布不是最后补一个按钮，而是一条完整流程：先冻结一个可玩的版本，再做手机实测、补齐商店包装、提交审核，最后回到论坛和评论区收第一批反馈。
                         </p>
-                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-300">
-                            <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>手机端能正常打开和操作。</span></label>
-                            <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>第一屏能看懂目标和操作。</span></label>
-                            <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>失败、重开、通关状态完整。</span></label>
-                            <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>准备好标题、简介、封面和截图。</span></label>
+                        <div class="mt-6 space-y-4">
+                            <div class="grid grid-cols-[36px_minmax(0,1fr)] gap-4 rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <div class="w-9 h-9 rounded-full bg-[#01C2C3] text-[#0a0f14] font-black flex items-center justify-center">1</div>
+                                <div>
+                                    <p class="text-sm font-semibold text-white">冻结一个可玩版本</p>
+                                    <p class="mt-1 text-sm text-gray-400 leading-relaxed">确认当前版本可以从开始玩到结算，不再继续加大功能。先把“能玩完一局”作为发布基线。</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-[36px_minmax(0,1fr)] gap-4 rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <div class="w-9 h-9 rounded-full bg-[#01C2C3] text-[#0a0f14] font-black flex items-center justify-center">2</div>
+                                <div>
+                                    <p class="text-sm font-semibold text-white">手机实测和问题回收</p>
+                                    <p class="mt-1 text-sm text-gray-400 leading-relaxed">用手机扫码试玩，重点检查首屏提示、触控区域、按钮大小、失败重开、音量和横竖屏适配。</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-[36px_minmax(0,1fr)] gap-4 rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <div class="w-9 h-9 rounded-full bg-[#01C2C3] text-[#0a0f14] font-black flex items-center justify-center">3</div>
+                                <div>
+                                    <p class="text-sm font-semibold text-white">准备商店包装</p>
+                                    <p class="mt-1 text-sm text-gray-400 leading-relaxed">准备游戏标题、一句话卖点、简介、封面、截图和开发者的话。截图优先展示核心玩法，不要只截菜单。</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-[36px_minmax(0,1fr)] gap-4 rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <div class="w-9 h-9 rounded-full bg-[#01C2C3] text-[#0a0f14] font-black flex items-center justify-center">4</div>
+                                <div>
+                                    <p class="text-sm font-semibold text-white">提交 TapTap 审核</p>
+                                    <p class="mt-1 text-sm text-gray-400 leading-relaxed">按页面要求填写资料并提交审核。注意补齐实机视频，否则上线后可能因为关键物料缺失而流量受限。</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-[36px_minmax(0,1fr)] gap-4 rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <div class="w-9 h-9 rounded-full bg-[#01C2C3] text-[#0a0f14] font-black flex items-center justify-center">5</div>
+                                <div>
+                                    <p class="text-sm font-semibold text-white">上线后收反馈</p>
+                                    <p class="mt-1 text-sm text-gray-400 leading-relaxed">把作品同步到 Maker 论坛，说明玩法和更新计划。第一批反馈优先修“看不懂、点不到、卡住、重开不了”。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <p class="text-sm font-semibold text-white mb-3">上线前最后检查</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-300">
+                                <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>手机端能正常打开和操作。</span></label>
+                                <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>第一屏能看懂目标和操作。</span></label>
+                                <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>失败、重开、通关状态完整。</span></label>
+                                <label class="flex items-start gap-3 rounded-xl border border-white/10 p-4 bg-white/[0.03]"><input type="checkbox" class="custom-checkbox mt-0.5"><span>标题、简介、封面、截图已经补齐。</span></label>
+                            </div>
                         </div>
                         <div class="mt-6 flex flex-wrap gap-3">
                             <a href="https://www.taptap.cn/moment/777645108861338642" target="_blank" class="inline-flex items-center h-10 px-4 rounded-lg border border-[#01C2C3] text-[#01C2C3] text-sm font-semibold hover:bg-[#01C2C3] hover:text-[#0a0f14] transition-colors">查看原论坛帖</a>
                             <a href="https://maker.taptap.cn/" target="_blank" class="inline-flex items-center h-10 px-4 rounded-lg bg-[#01C2C3] text-[#0a0f14] text-sm font-bold hover:scale-[1.02] transition-transform">进入 Maker 制造</a>
+                        </div>
+                    </section>
+
+                    <section id="doc-distribution" class="scroll-mt-28 border border-white/10 bg-[#0a0f14]/55 backdrop-blur-md rounded-2xl p-6 md:p-8">
+                        <p class="text-xs font-mono tracking-[0.2em] text-[#01C2C3] mb-3">07 / DISTRIBUTION</p>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white">分发与资源：上线后怎么被看见</h3>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            精华帖里反复出现的重点是：发布不是终点。Maker 游戏上线后会有基础曝光，但额外曝光、资源支持和社区认可，更多取决于作品完成度、论坛反馈、开发日志和后续迭代。
+                        </p>
+
+                        <div class="mt-6 rounded-xl border border-[#01C2C3]/30 bg-[#01C2C3]/[0.06] p-5">
+                            <p class="text-sm font-semibold text-[#01C2C3]">官方更鼓励的创作路径</p>
+                            <div class="mt-4 grid grid-cols-1 md:grid-cols-5 gap-3 text-sm">
+                                <div class="rounded-lg border border-white/10 bg-black/15 p-3 text-gray-300">先做能玩的版本</div>
+                                <div class="rounded-lg border border-white/10 bg-black/15 p-3 text-gray-300">发论坛收反馈</div>
+                                <div class="rounded-lg border border-white/10 bg-black/15 p-3 text-gray-300">资源不够再申请</div>
+                                <div class="rounded-lg border border-white/10 bg-black/15 p-3 text-gray-300">完成度够再上线</div>
+                                <div class="rounded-lg border border-white/10 bg-black/15 p-3 text-gray-300">社区认可后争取更多曝光</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <p class="text-sm font-semibold text-white">流量受限先查实机视频</p>
+                                <p class="mt-2 text-sm text-gray-400 leading-relaxed">如果开发者中心显示“流量受限”，优先检查是否缺实机视频。需要手动创建提审版本、添加实机视频，再次提审通过后才能正常分发。</p>
+                            </div>
+                            <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <p class="text-sm font-semibold text-white">游戏上新帖不是申请表</p>
+                                <p class="mt-2 text-sm text-gray-400 leading-relaxed">论坛更适合写玩法说明、开发日志、版本变化和具体问题。高质量讨论、有效经验和 bug 反馈，都会帮助作品被更多人看到。</p>
+                            </div>
+                            <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <p class="text-sm font-semibold text-white">资源申请要带作品计划</p>
+                                <p class="mt-2 text-sm text-gray-400 leading-relaxed">需要更高积分计划或临时应急积分时，通过创作资源申请问卷提交。申请是否通过，会结合作品情况、创作计划和社区讨论活跃度判断。</p>
+                            </div>
+                            <div class="rounded-xl border border-white/10 p-4 bg-white/[0.03]">
+                                <p class="text-sm font-semibold text-white">有信心后开启评分</p>
+                                <p class="mt-2 text-sm text-gray-400 leading-relaxed">当游戏已经稳定、体验完整，再考虑开启评分。评分和数据表现会影响推荐系统判断，也能帮助后续获得更多曝光机会。</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex flex-wrap gap-3">
+                            <a href="https://www.taptap.cn/moment/801513912787797931" target="_blank" class="inline-flex items-center h-10 px-4 rounded-lg border border-[#01C2C3] text-[#01C2C3] text-sm font-semibold hover:bg-[#01C2C3] hover:text-[#0a0f14] transition-colors">资源与分发说明</a>
+                            <a href="https://www.taptap.cn/moment/768989976548346480" target="_blank" class="inline-flex items-center h-10 px-4 rounded-lg border border-white/15 text-gray-200 text-sm font-semibold hover:border-[#01C2C3] hover:text-[#01C2C3] transition-colors">流量受限解决路径</a>
                         </div>
                     </section>
                 </div>
