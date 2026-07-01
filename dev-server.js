@@ -5,6 +5,7 @@ const path = require("path");
 const rootDir = __dirname;
 const defaultFile = "taptap-maker-guide-optimized.html";
 const requestedPort = Number(process.env.PORT || process.argv[2] || 4173);
+const host = process.env.HOST || "127.0.0.1";
 const clients = new Set();
 
 const mimeTypes = {
@@ -130,7 +131,7 @@ server.on("error", (error) => {
   if (error.code === "EADDRINUSE") {
     const nextPort = requestedPort + 1;
     console.log(`Port ${requestedPort} is in use, trying ${nextPort}...`);
-    server.listen(nextPort, "127.0.0.1");
+    server.listen(nextPort, host);
     return;
   }
 
@@ -140,10 +141,14 @@ server.on("error", (error) => {
 server.on("listening", () => {
   const address = server.address();
   const port = typeof address === "object" ? address.port : requestedPort;
-  console.log(`Preview: http://127.0.0.1:${port}/`);
-  console.log(`Direct:  http://127.0.0.1:${port}/${defaultFile}`);
+  const localHost = host === "0.0.0.0" ? "127.0.0.1" : host;
+  console.log(`Preview: http://${localHost}:${port}/`);
+  console.log(`Direct:  http://${localHost}:${port}/${defaultFile}`);
+  if (host === "0.0.0.0") {
+    console.log("LAN mode is enabled. Use this computer's intranet IP with the same port.");
+  }
   console.log("Watching local HTML/CSS/JS/JSON files. Press Ctrl+C to stop.");
 });
 
 watchFiles();
-server.listen(requestedPort, "127.0.0.1");
+server.listen(requestedPort, host);
