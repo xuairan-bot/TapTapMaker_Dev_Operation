@@ -1,0 +1,90 @@
+name: Feishu Push Notify
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send push summary to Feishu
+        env:
+          FEISHU_BOT_WEBHOOK: ${{ secrets.FEISHU_BOT_WEBHOOK }}
+          FEISHU_BOT_SECRET: ${{ secrets.FEISHU_BOT_SECRET }}
+          REPOSITORY: ${{ github.repository }}
+          REF_NAME: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+          PUSHER: ${{ github.event.pusher.name }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+          COMPARE_URL: ${{ github.event.compare }}
+          HEAD_MESSAGE: ${{ github.event.head_commit.message }}
+          HEAD_URL: ${{ github.event.head_commit.url }}
+        run: |
+          if [ -z "$FEISHU_BOT_WEBHOOK" ]; then
+            echo "FEISHU_BOT_WEBHOOK is not configured; skip Feishu notification."
+            exit 0
+          fi
+
+          node <<'NODE'
+          const crypto = require("crypto");
+
+          const webhook = process.env.FEISHU_BOT_WEBHOOK;
+          const secret = process.env.FEISHU_BOT_SECRET || "";
+          const timestamp = Math.floor(Date.now() / 1000).toString();
+          const shortSha = (process.env.AFTER_SHA || "").slice(0, 7);
+          const beforeSha = (process.env.BEFORE_SHA || "").slice(0, 7);
+          const pusher = process.env.PUSHER || process.env.ACTOR || "unknown";
+          const message = process.env.HEAD_MESSAGE || "(no commit message)";
+
+          const lines = [
+            "TapTap制造网站有新的 GitHub 推送",
+            "",
+            `仓库：${process.env.REPOSITORY}`,
+            `分支：${process.env.REF_NAME}`,
+            `推送人：${pusher}`,
+            `提交：${beforeSha} -> ${shortSha}`,
+            `说明：${message}`,
+            "",
+            `提交详情：${process.env.HEAD_URL}`,
+            `本次变更：${process.env.COMPARE_URL}`,
+          ];
+
+          const payload = {
+            msg_type: "text",
+            content: {
+              text: lines.join("\n"),
+            },
+          };
+
+          if (secret) {
+            payload.timestamp = timestamp;
+            payload.sign = crypto
+              .createHmac("sha256", `${timestamp}\n${secret}`)
+              .update("")
+              .digest("base64");
+          }
+
+          fetch(webhook, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          })
+            .then(async (res) => {
+              const body = await res.text();
+              if (!res.ok) {
+                throw new Error(`Feishu webhook failed: ${res.status} ${body}`);
+              }
+              console.log(body);
+            })
+            .catch((error) => {
+              console.error(error);
+              process.exit(1);
+            });
+          NODE
